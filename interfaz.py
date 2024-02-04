@@ -22,8 +22,8 @@ def generar_reporte():
     pesos_iniciales, pesos_finales, epocas, error = pl.obtener_pesos()
     reporte = (f"Número de Épocas: {epocas}\n"
                f"Error permisible: {error}\n\n"
-               f"Pesos iniciales:\n{pesos_iniciales}\n\n"
-               f"Pesos finales:\n{pesos_finales}")
+               f"Configuracion de pesos iniciales:\n{pesos_iniciales}\n\n"
+               f"Configuracion de pesos finales:\n{pesos_finales}")
     tk.messagebox.showinfo("Reporte de Pesos", reporte)
 
 root = tk.Tk()

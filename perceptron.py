@@ -60,14 +60,14 @@ def mostrar_resultados():
     plt.figure(figsize=(12, 4))
     plt.subplot(1, 2, 1)
     plt.plot(range(1, len(norma_error_epocas) + 1), norma_error_epocas)
-    plt.title('Norma del Error en Cada Época')
+    plt.title('Evolución de la norma del error (|e|)')
     plt.xlabel('Época')
     plt.ylabel('Norma del Error')
 
     plt.subplot(1, 2, 2)
     for i, pesos_epoca in enumerate(evolucion_pesos):
         plt.plot(range(1, len(pesos_epoca) + 1), pesos_epoca, label=f'Peso {i + 1}')
-    plt.title('Evolución de Pesos en Cada Época')
+    plt.title('Evolución del valor de los pesos (W)')
     plt.xlabel('Época')
     plt.ylabel('Valor del Peso')
     plt.legend()
