@@ -11,19 +11,19 @@ num_epocas = 0
 error_permisible = 0
 
 def entrenar_perceptron(eta, epocas, ruta_del_archivo, progreso_barra):
-    global norma_error_epocas, evolucion_pesos, pesos_iniciales, pesos_finales
+    global norma_error_epocas, evolucion_pesos, pesos_iniciales,num_epocas, pesos_finales
 
-    # Limpiando las listas en caso de entrenamientos previos
     norma_error_epocas.clear()
     evolucion_pesos.clear()
 
-    delimitador = ';'  # Asumiendo que el archivo usa ';' como delimitador
-    nombres_columnas = ['X1', 'X2', 'X3', 'Y']
+    delimitador = ';'
     
-    data_frame = pd.read_csv(ruta_del_archivo, delimiter=delimitador, header=None, names=nombres_columnas)
+    data_frame = pd.read_csv(ruta_del_archivo, delimiter=delimitador,
+                             header=None)
+
     num_caracteristicas = len(data_frame.columns) - 1
 
-    pesos = np.random.uniform(low=0, high=1, size=(num_caracteristicas + 1, 1)).round(2)
+    pesos = np.random.uniform(low=0, high=1, size=(num_caracteristicas + 1, 1)).round(4)
     columnas_x = np.hstack([data_frame.iloc[:, :-1].values, np.ones((data_frame.shape[0], 1))])
     columna_y = np.array(data_frame.iloc[:, -1])
 
@@ -53,7 +53,7 @@ def entrenar_perceptron(eta, epocas, ruta_del_archivo, progreso_barra):
         # Actualiza la barra de progreso
         progreso_barra['value'] = (epoch + 1) / epocas * 100
         progreso_barra.update()
-    pesos_finales = pesos 
+    pesos_finales = pesos
 
 def mostrar_resultados():
     global norma_error_epocas, evolucion_pesos

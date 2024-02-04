@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, ttk
 import perceptron as pl
 import threading
+import numpy as np
 
 def seleccionar_archivo():
     filename = filedialog.askopenfilename(initialdir="/", title="Select file",
@@ -19,6 +20,7 @@ def mostrar_graficas():
     pl.mostrar_resultados()
 
 def generar_reporte():
+    np.set_printoptions(precision=4, suppress=True)
     pesos_iniciales, pesos_finales, epocas, error = pl.obtener_pesos()
     reporte = (f"Número de Épocas: {epocas}\n"
                f"Error permisible: {error}\n\n"
